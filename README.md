@@ -2,7 +2,7 @@
 
 ## Opis projektu
 
-Projekt jest aplikacją backendowąh, która wykorzystuje **Node.js**, **JavaScript**, **MongoDB** oraz **CommonJS**. Jest to nierelacyjna baza danych, która przechowuje informacje o harmonogramie szkół tanecznych, w tym dane o szkołach, zajęciach tanecznych i trenerach. Aplikacja umożliwia również przechowywanie opinii użytkowników na temat zajęć tanecznych.
+Projekt jest aplikacją backendową, która wykorzystuje **Node.js**, **JavaScript**, **MongoDB** oraz **CommonJS**. Jest to nierelacyjna baza danych, która przechowuje informacje o harmonogramie szkół tanecznych, w tym dane o szkołach, zajęciach tanecznych i trenerach. Aplikacja umożliwia również przechowywanie opinii użytkowników na temat zajęć tanecznych.
 
 ## Technologie
 
