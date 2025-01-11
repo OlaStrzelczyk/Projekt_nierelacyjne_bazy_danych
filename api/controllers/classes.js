@@ -8,7 +8,7 @@ const User = require("../models/user");
 exports.classes_get_all = async (req, res) => {
     try {
         const classes = await Class.aggregate([
-            { $project: { name: 1, level: 1, price: 1, date: 1, time: 1 } } // Wybieramy tylko potrzebne pola
+            { $project: { name: 1, level: 1, price: 1, date: 1, time: 1 } }
         ]);
 
         res.status(200).json(classes);
