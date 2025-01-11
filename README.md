@@ -81,18 +81,20 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | **DELETE**| `/port/trainers/:trainerId`   | Usunięcie trenera na podstawie ID.  
 
 
+
+
+# Expected Body:
+
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
 | POST   | `/port/users/signup` | Endpoint rejestrujący użytkownika |
 
-# Expected Body:
-
 ```json
 {
-	"name": "new_name",
-	"surname": "new_surname",
-	"email": "new_email",
-	"password": "new_password
+	"name": "new_name", //string, required
+	"surname": "new_surname", //string, required
+	"email": "new_email", //string, required
+	"password": "new_password" //string, required
 }
 ```
 | Metoda | Route               | Opis                             |
@@ -101,12 +103,15 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 ```json
 {
-	"name": "your_name",
-	"surname": "your_surname",
-	"email": "your_email",
-	"password": "your_password
+	"name": "your_name", //string, required
+	"surname": "your_surname", //string, required
+	"email": "your_email", //string, required
+	"password": "your_password" //string, required
 }
 ```
+
+
+
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
