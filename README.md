@@ -81,20 +81,29 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | **DELETE**| `/port/trainers/:trainerId`   | Usunięcie trenera na podstawie ID.  
 
 
-| Metoda | Route               | Opis                             | Body                                   |
-|--------|---------------------|----------------------------------| ---------------------------------------|
-| POST   | `/port/users/signup` | Endpoint rejestrujący użytkownika |    {
+| Metoda | Route               | Opis                             |
+|--------|---------------------|----------------------------------|
+| POST   | `/port/users/signup` | Endpoint rejestrujący użytkownika |
+
+# Expected Body:
+
+{
 	"name": "new_name",
 	"surname": "new_surname",
 	"email": "new_email",
 	"password": "new_password
-}                                  |
-| POST   | `/port/users/login`  | Endpoint logujący użytkownika    |        {
+}
+
+| Metoda | Route               | Opis                             |
+|--------|---------------------|----------------------------------|
+| POST   | `/port/users/login`  | Endpoint logujący użytkownika    |
+
+{
 	"name": "your_name",
 	"surname": "your_surname",
 	"email": "your_email",
 	"password": "your_password
-}                           |
+}
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
