@@ -44,7 +44,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 ## Testowanie API
 - Można używać "Postman" do testowania API.
 
-# Dostępne endpointy
+# Dostępne Endpointy
 
 ## Kolekcja: Classes (Zajęcia Taneczne)
 
