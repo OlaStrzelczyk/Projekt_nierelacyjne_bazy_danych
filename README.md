@@ -61,6 +61,13 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | **PATCH** | `/port/classes/:classId`         | Zmiana jednego lub kilku (nie wszystkich) danych dotyczących konkretnego zajęcia tanecznego.         |
 | **DELETE**| `/port/classes/:classId`         | Usunięcie konkretnego zajęcia tanecznego na podstawie ID.                                            |
 
+| Metoda  | Route                         | Opis                                                                                  |
+|---------|-------------------------------|---------------------------------------------------------------------------------------|
+| **POST**  | `/port/schools`               | Dodawanie nowej szkoły tanecznej.                                                      |
+| **GET**   | `/port/schools`               | Pobranie wszystkich szkół tanecznych.                                                 |
+| **GET**   | `/port/schools/:schoolId`     | Pobranie szczegółowych informacji o konkretnej szkole tanecznej, w tym zajęć tanecznych w tej szkole oraz trenerów (pracowników).                       |
+| **PUT**   | `/port/schools/:schoolId`     | Zmiana danych szkoły tanecznej na podstawie ID.                                        |
+| **DELETE**| `/port/schools/:schoolId`     | Usunięcie szkoły tanecznej na podstawie ID.                                            |
 
 
 
