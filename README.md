@@ -83,16 +83,12 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 |Register Endpoint      |
 |POST /port/users/signup|
 
-| Metoda  | Route                              | Opis                                                                                                 |
-|---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 
-
-| Metoda  | Route                              | Opis                                                                                                 |
-|---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 
 
 | Metoda  | Route                              | Opis                                                                                                 |
-|---------|------------------------------------|------------------------------------------------------------------------------------------------------|
+|**POST**|'/port/users/signup'|  Endpoint rejestrujący użytkownika|
+| **POST**  | `/port/users/login`              | Endpoint logujący użytkownika                                        |
 
 
 | Metoda  | Route                              | Opis                                                                                                 |
