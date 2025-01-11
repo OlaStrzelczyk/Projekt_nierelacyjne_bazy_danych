@@ -28,25 +28,25 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 4. **Opinie** (`reviews`)
    - Tablica przechowująca opinie użytkowników na temat poszczególnych zajęć tanecznych.
    
-# Relacje między kolekcjami:
+## Relacje między kolekcjami:
 - Kolekcje są połączone relacjami. Na przykład:
 - każde zajęcie (`classes`) może mieć przypisanych kilku trenerów (`trainers`), opinie (`reviews`) oraz jedną szkołę tańca ('schools'),
 - każda szkoła tańca ma przypisane zajęcia taneczne (`classes`) oraz trenerów (`trainers`),
 - każdy trener należy do danej szkoły (`schools`) i udziela konkretne zajęcia (`classes`).
 
-# Zabezpieczenia
+## Zabezpieczenia
 
 - wszystkie routy zabezpieczone - zapewnia to bezpieczeństwo wrażliwych operacji za pomocą autoryzacji. Tylko użytkownicy, którzy są zalogowani, mogą dodawać, edytować lub usuwać dane.
  
-# Uruchomienie aplikacji
+## Uruchomienie aplikacji
 - Uruchamianie aplikacji na swoim lokalnym serwerze za pomocą komendy: "node server.js".
 
-# Testowanie API
+## Testowanie API
 - Można używać "Postman" do testowania API.
 
-## Dostępne endpointy
+# Dostępne endpointy
 
-# Kolekcja: Classes (Zajęcia Taneczne)
+## Kolekcja: Classes (Zajęcia Taneczne)
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
@@ -59,7 +59,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | **PATCH** | `/port/classes/:classId`         | Zmiana jednego lub kilku (nie wszystkich) danych dotyczących konkretnego zajęcia tanecznego.         |
 | **DELETE**| `/port/classes/:classId`         | Usunięcie konkretnego zajęcia tanecznego na podstawie ID.                                            |
 
-# Kolekcja: Schools (Szkoły taneczne)
+## Kolekcja: Schools (Szkoły taneczne)
 
 | Metoda  | Route                         | Opis                                                                                  |
 |---------|-------------------------------|---------------------------------------------------------------------------------------|
@@ -70,7 +70,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | **DELETE**| `/port/schools/:schoolId`     | Usunięcie szkoły tanecznej na podstawie ID.                                            |
 
 
-# Kolekcja: Trainers (Trenerzy)
+## Kolekcja: Trainers (Trenerzy)
 
 | Metoda  | Route                         | Opis                                                                                  |
 |---------|-------------------------------|---------------------------------------------------------------------------------------|
@@ -83,13 +83,13 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 
 
-# Endpoint rejestrujący użytkownika
+## Endpoint rejestrujący użytkownika
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
 | POST   | `/port/users/signup` | Endpoint rejestrujący użytkownika |
 
-# Expected body:
+## Expected body:
 ```json
 {
 	"name": "new_name", // string, required
