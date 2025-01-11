@@ -99,13 +99,13 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 }
 ```
 
-# Endpoint logujący użytkownika
+## Endpoint logujący użytkownika
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
 | POST   | `/port/users/login`  | Endpoint logujący użytkownika    |
 
-# Expected body
+## Expected body
 ```json
 {
 	"name": "your_name", // string, required
