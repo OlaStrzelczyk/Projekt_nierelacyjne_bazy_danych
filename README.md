@@ -94,6 +94,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 	"email": "new_email",
 	"password": "new_password
 }
+\`\`\`
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
@@ -106,6 +107,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 	"email": "your_email",
 	"password": "your_password
 }
+\`\`\`
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
