@@ -91,10 +91,10 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 ```json
 {
-	"name": "new_name", //string, required
-	"surname": "new_surname", //string, required
-	"email": "new_email", //string, required
-	"password": "new_password" //string, required
+	"name": "new_name", // string, required
+	"surname": "new_surname", // string, required
+	"email": "new_email", // string, required
+	"password": "new_password" // string, required
 }
 ```
 | Metoda | Route               | Opis                             |
@@ -103,10 +103,10 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 ```json
 {
-	"name": "your_name", //string, required
-	"surname": "your_surname", //string, required
-	"email": "your_email", //string, required
-	"password": "your_password" //string, required
+	"name": "your_name", // string, required
+	"surname": "your_surname", // string, required
+	"email": "your_email", // string, required
+	"password": "your_password" // string, required
 }
 ```
 
