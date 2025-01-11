@@ -64,10 +64,62 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda  | Route                         | Opis                                                                                  |
 |---------|-------------------------------|---------------------------------------------------------------------------------------|
 | **POST**  | `/port/schools`               | Dodawanie nowej szkoły tanecznej.                                                      |
+```json
+{
+	"name": "new_name", // string, required
+	"surname": "new_surname", // string, required
+	"email": "new_email", // string, required
+	"password": "new_password" // string, required
+}
+```
+
+| Metoda | Route               | Opis                             |
+|--------|---------------------|----------------------------------|
 | **GET**   | `/port/schools`               | Pobranie wszystkich szkół tanecznych.                                                 |
+```json
+{
+	"name": "new_name", // string, required
+	"surname": "new_surname", // string, required
+	"email": "new_email", // string, required
+	"password": "new_password" // string, required
+}
+```
+
+| Metoda | Route               | Opis                             |
+|--------|---------------------|----------------------------------|
 | **GET**   | `/port/schools/:schoolId`     | Pobranie szczegółowych informacji o konkretnej szkole tanecznej, w tym zajęć tanecznych w tej szkole oraz trenerów (pracowników).                       |
+```json
+{
+	"name": "new_name", // string, required
+	"surname": "new_surname", // string, required
+	"email": "new_email", // string, required
+	"password": "new_password" // string, required
+}
+```
+
+| Metoda | Route               | Opis                             |
+|--------|---------------------|----------------------------------|
 | **PUT**   | `/port/schools/:schoolId`     | Zmiana jednego lub kilku (nie wszystkich) danych dotyczących konkretnej szkoły.                                        |
+```json
+{
+	"name": "new_name", // string, required
+	"surname": "new_surname", // string, required
+	"email": "new_email", // string, required
+	"password": "new_password" // string, required
+}
+```
+
+| Metoda | Route               | Opis                             |
+|--------|---------------------|----------------------------------|
 | **DELETE**| `/port/schools/:schoolId`     | Usunięcie szkoły tanecznej na podstawie ID.                                            |
+```json
+{
+	"name": "new_name", // string, required
+	"surname": "new_surname", // string, required
+	"email": "new_email", // string, required
+	"password": "new_password" // string, required
+}
+```
 
 
 ## Kolekcja: Trainers (Trenerzy)
