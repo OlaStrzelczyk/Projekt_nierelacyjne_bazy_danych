@@ -30,7 +30,7 @@ exports.classes_add_new = (req, res) => {
         date: req.body.date,
         time: req.body.time,
         trainer: req.body.trainer,
-        reviews: [] // Inicjalizuj jako pustą tablicę
+        reviews: [] 
     });
 
     newclass.save()
@@ -51,16 +51,16 @@ exports.classes_add_review = async (req, res) => {
     const newReview = {
         text: req.body.text,
         rating: req.body.rating,
-        author: req.body.author, // ID autora recenzji
-        date: new Date(), // Automatycznie ustawiamy aktualną datę
+        author: req.body.author, 
+        date: new Date(), 
     };
 
     try {
         // Dodajemy nową recenzję do tablicy `reviews`
         const updatedClass = await Class.findByIdAndUpdate(
             classId,
-            { $push: { reviews: newReview } }, // Dodanie recenzji do tablicy
-            { new: true, runValidators: true } // Zwracamy zaktualizowany dokument
+            { $push: { reviews: newReview } }, 
+            { new: true, runValidators: true } 
         );
 
         if (!updatedClass) {
@@ -84,7 +84,7 @@ exports.classes_get_reviews = async (req, res) => {
 
     try {
         const result = await Class.aggregate([
-            { $match: { _id: new mongoose.Types.ObjectId(id) } }, // Dopasowanie zajęć po ID
+            { $match: { _id: new mongoose.Types.ObjectId(id) } },
             {
                 $project: {
                     name: 1,
@@ -92,18 +92,18 @@ exports.classes_get_reviews = async (req, res) => {
                 },
             },
             {
-                $unwind: { path: "$reviews", preserveNullAndEmptyArrays: true }, // Rozwiń tablicę recenzji
+                $unwind: { path: "$reviews", preserveNullAndEmptyArrays: true }, 
             },
             {
                 $lookup: {
-                    from: "users", // Kolekcja użytkowników
+                    from: "users", 
                     localField: "reviews.author",
                     foreignField: "_id",
                     as: "authorDetails",
                 },
             },
             {
-                $unwind: { path: "$authorDetails", preserveNullAndEmptyArrays: true }, // Rozwiń szczegóły autora
+                $unwind: { path: "$authorDetails", preserveNullAndEmptyArrays: true }, 
             },
             {
                 $group: {
@@ -114,7 +114,7 @@ exports.classes_get_reviews = async (req, res) => {
                             text: "$reviews.text",
                             rating: "$reviews.rating",
                             date: "$reviews.date",
-                            authorEmail: "$authorDetails.email", // Dodaj e-mail autora
+                            authorEmail: "$authorDetails.email", 
                         },
                     },
                 },
@@ -143,10 +143,10 @@ exports.classes_get_reviews = async (req, res) => {
   
       try {
           const result = await Class.aggregate([
-              { $match: { _id: new mongoose.Types.ObjectId(id) } }, // Dopasowanie klasy po ID
+              { $match: { _id: new mongoose.Types.ObjectId(id) } }, 
               {
                   $lookup: {
-                      from: "trainers", // Kolekcja użytkowników (trenerów)
+                      from: "trainers", 
                       localField: "trainer",
                       foreignField: "_id",
                       as: "trainer",
@@ -154,7 +154,7 @@ exports.classes_get_reviews = async (req, res) => {
               },
               {
                   $lookup: {
-                      from: "schools", // Kolekcja szkół
+                      from: "schools", 
                       localField: "school",
                       foreignField: "_id",
                       as: "dance_school",
@@ -162,7 +162,7 @@ exports.classes_get_reviews = async (req, res) => {
               },
               {
                   $lookup: {
-                      from: "users", // Kolekcja użytkowników (autorów opinii)
+                      from: "users", 
                       localField: "reviews.author",
                       foreignField: "_id",
                       as: "review_author",
@@ -176,7 +176,7 @@ exports.classes_get_reviews = async (req, res) => {
                     price: { $first: "$price" },
                     date: { $first: "$date" },
                     time: { $first: "$time" },
-                    trainer: { $first: "$trainer" }, // Zachowaj dane trenera
+                    trainer: { $first: "$trainer" }, 
                     school: { $first: "$dance_school" },
                       reviews: {
                           $push: {
@@ -216,14 +216,14 @@ exports.classes_update = (req, res) => {
         school: req.body.school,
         date: req.body.date,
         time: req.body.time,
-        trainer: req.body.trainer,  // Możesz przekazać tylko ID trenera, jeśli aktualizujesz trenera.
-        reviews: req.body.reviews,  // Zakładając, że masz już dane o opiniach.
+        trainer: req.body.trainer,  
+        reviews: req.body.reviews,  
     };
 
     Class.findByIdAndUpdate(id, updatedData, { new: true, runValidators: true })
         .populate('school', 'name')
-        .populate('trainer', 'name')  // Wczytujemy dane trenera (name)
-        .populate('reviews.author', 'email')  // Wczytujemy dane autora opinii (email)
+        .populate('trainer', 'name') 
+        .populate('reviews.author', 'email')  
         .then(updatedClass => {
             if (!updatedClass) {
                 return res.status(404).json({ wiadomość: "Nie znaleziono zajęć o podanym ID do aktualizacji." });
@@ -237,11 +237,11 @@ exports.classes_update = (req, res) => {
                     price: updatedClass.price,
                     date: updatedClass.date,
                     time: updatedClass.time,
-                    trainer: updatedClass.trainer.name,  // Wyswietl nazwe trenera
+                    trainer: updatedClass.trainer.name,  
                     reviews: updatedClass.reviews.map(review => ({
                         text: review.text,
                         rating: review.rating,
-                        author: review.author.email,  // Wyswietl email autora opinii
+                        author: review.author.email,  
                         date: review.date
                     }))
                 },
@@ -256,8 +256,8 @@ exports.classes_patch = (req, res) => {
 
     Class.findByIdAndUpdate(id, patchData, { new: true, runValidators: true })
         .populate('school', 'name')
-        .populate('trainer', 'name')  // Populujemy dane trenera (name)
-        .populate('reviews.author', 'email')  // Populujemy dane autora opinii (email)
+        .populate('trainer', 'name') 
+        .populate('reviews.author', 'email')  
         .then(updatedClass => {
             if (!updatedClass) {
                 return res.status(404).json({ wiadomość: "Nie znaleziono zajęć o podanym ID do aktualizacji." });
@@ -265,17 +265,17 @@ exports.classes_patch = (req, res) => {
             res.status(200).json({
                 wiadomość: "Częściowo zaktualizowano dane zajęć tanecznych: " + updatedClass.name,
                 dane: {
-                    name: updatedClass.name,  // Zwróć nazwę zajęć
+                    name: updatedClass.name, 
                     level: updatedClass.level,
                     school: updatedClass.school,
                     price: updatedClass.price,
                     date: updatedClass.date,
                     time: updatedClass.time,
-                    trainer: updatedClass.trainer.name,  // Zwróć nazwę trenera
+                    trainer: updatedClass.trainer.name,  
                     reviews: updatedClass.reviews.map(review => ({
                         text: review.text,
                         rating: review.rating,
-                        author: review.author.email,  // Zwróć email autora opinii
+                        author: review.author.email,  
                         date: review.date
                     }))
                 },
@@ -292,7 +292,6 @@ exports.classes_delete = (req, res) => {
             if (!deletedClass) {
                 return res.status(404).json({ wiadomość: "Nie znaleziono zajęć o podanym ID do usunięcia." });
             }
-            // Zamiast ID, zwracamy nazwę zajęcia
             res.status(200).json({ wiadomość: "Usunięto zajęcia taneczne: " + deletedClass.name });
         })
         .catch(err => res.status(500).json({ wiadomość: err.message }));

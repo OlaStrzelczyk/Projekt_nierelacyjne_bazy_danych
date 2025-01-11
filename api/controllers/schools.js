@@ -12,7 +12,7 @@ exports.schools_get_all = async (req, res) => {
                     location: 1, 
                     description: 1, 
                     contact: 1 
-                } // Wybieramy tylko potrzebne pola, wykluczamy `trainer` i `classes`
+                } 
             }
         ]);
 
@@ -25,13 +25,13 @@ exports.schools_get_all = async (req, res) => {
 };
 
 exports.schools_get_by_id = (req, res, next) => {
-    const id = req.params.schoolId; // Konwertujemy ID na ObjectId
+    const id = req.params.schoolId; 
 
     School.aggregate([
         { $match: { _id: new mongoose.Types.ObjectId(id) } }, 
         {
             $lookup: {
-                from: 'trainers', // Nazwa kolekcji trenerów
+                from: 'trainers', 
                 localField: 'trainer',
                 foreignField: '_id',
                 as: 'trainers'
@@ -39,7 +39,7 @@ exports.schools_get_by_id = (req, res, next) => {
         },
         {
             $lookup: {
-                from: 'classes', // Nazwa kolekcji zajęć
+                from: 'classes', 
                 localField: 'classes',
                 foreignField: '_id',
                 as: 'classes'
@@ -52,8 +52,8 @@ exports.schools_get_by_id = (req, res, next) => {
                 location: 1,
                 description: 1,
                 contact: 1,
-                trainers: { name: 1 }, // Projekcja imienia trenera
-                classes: { name: 1 } // Projekcja nazwy zajęć
+                trainers: { name: 1 }, 
+                classes: { name: 1 } 
             }
         }
     ])
@@ -64,7 +64,7 @@ exports.schools_get_by_id = (req, res, next) => {
 
         res.status(200).json({
             wiadomość: "Szczegóły szkoły tańca o numerze: " + id,
-            dane: result[0] // Wynik agregacji to tablica, pobieramy pierwszy element
+            dane: result[0] 
         });
     })
     .catch(err => {
@@ -81,8 +81,8 @@ exports.schools_add_new = (req, res, next) => {
         location: req.body.location,
         description: req.body.description,
         contact: req.body.contact,
-        trainer: req.body.trainer,  // Ustawiamy ID trenera
-        classes: req.body.classes   // Ustawiamy tablicę ID zajęć
+        trainer: req.body.trainer,  
+        classes: req.body.classes   
     });
 
     newschool.save()
@@ -115,10 +115,9 @@ exports.schools_update = (req, res, next) => {
           return res.status(404).json({ wiadomość: "Nie znaleziono szkoły o podanym ID do aktualizacji." });
         }
   
-        // Pobranie szkoły z rozwiniętymi polami
         const populatedSchool = await School.findById(id)
-          .populate('trainer', 'name') // Pobiera imię i nazwisko trenera
-          .populate('classes', 'name'); // Pobiera nazwy zajęć
+          .populate('trainer', 'name') 
+          .populate('classes', 'name'); 
   
         res.status(200).json({
           wiadomość: `Zaktualizowano dane szkoły: ${populatedSchool.name}`,
@@ -152,10 +151,9 @@ exports.schools_update = (req, res, next) => {
           return res.status(404).json({ wiadomość: "Nie znaleziono szkoły o podanym ID do aktualizacji." });
         }
   
-        // Pobranie szkoły z rozwiniętymi polami
         const populatedSchool = await School.findById(id)
-          .populate('trainer', 'name') // Pobiera imię i nazwisko trenera
-          .populate('classes', 'name'); // Pobiera nazwy zajęć
+          .populate('trainer', 'name') 
+          .populate('classes', 'name'); 
   
         res.status(200).json({
           wiadomość: `Częściowo zaktualizowano dane szkoły: ${populatedSchool.name}`,
@@ -181,14 +179,12 @@ exports.schools_update = (req, res, next) => {
   exports.schools_delete = (req, res, next) => {
     const id = req.params.schoolId;
   
-    // Znalezienie szczegółów szkoły przed usunięciem
     School.findById(id)
       .then((schoolToDelete) => {
         if (!schoolToDelete) {
           return res.status(404).json({ wiadomość: "Nie znaleziono szkoły o podanym ID do usunięcia." });
         }
   
-        // Usunięcie szkoły
         return School.findByIdAndDelete(id).then(() => {
           res.status(200).json({
             wiadomość: `Usunięto szkołę: ${schoolToDelete.name}`,

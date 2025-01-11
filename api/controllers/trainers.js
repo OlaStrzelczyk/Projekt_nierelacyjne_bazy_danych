@@ -12,7 +12,7 @@ exports.trainers_get_all = async (req, res) => {
                     bio: 1,
                     experience: 1, 
                     contact: 1 
-                } // Wybieramy tylko potrzebne pola, wykluczamy `classes` i `school`
+                } 
             }
         ]);
 
@@ -61,25 +61,25 @@ exports.trainers_get_by_id = async (req, res) => {
 
     try {
         const result = await Trainer.aggregate([
-            { $match: { _id: new mongoose.Types.ObjectId(id) } }, // Dopasowanie trenera po ID
+            { $match: { _id: new mongoose.Types.ObjectId(id) } }, 
             {
                 $lookup: {
-                    from: "schools", // Kolekcja szkół
-                    localField: "school", // ID szkoły przypisane do trenera
+                    from: "schools", 
+                    localField: "school", 
                     foreignField: "_id",
                     as: "school",
                 },
             },
             {
                 $lookup: {
-                    from: "classes", // Kolekcja zajęć
-                    localField: "_id", // ID trenera
-                    foreignField: "trainer", // ID trenera w kolekcji zajęć
+                    from: "classes", 
+                    localField: "_id", 
+                    foreignField: "trainer", 
                     as: "classes",
                 },
             },
             {
-                $unwind: { path: "$school", preserveNullAndEmptyArrays: true }, // Rozwiń szczegóły szkoły
+                $unwind: { path: "$school", preserveNullAndEmptyArrays: true }, 
             },
             {
                 $project: {
@@ -142,8 +142,6 @@ exports.trainers_update = (req, res, next) => {
             if (!updatedTrainer) {
                 return res.status(404).json({ message: "Nie znaleziono trenera o podanym ID do aktualizacji." });
             }
-
-            // Pobranie zaktualizowanych danych z rozwiniętymi referencjami
             const populatedTrainer = await Trainer.findById(id)
                 .populate('school', 'name')
                 .populate('classes', 'name');
@@ -176,20 +174,18 @@ exports.trainers_patch = async (req, res, next) => {
     }
 
     try {
-        // Aktualizacja trenera
         const updatedTrainer = await Trainer.findByIdAndUpdate(id, patchData, {
-            new: true, // Zwraca zaktualizowany dokument
-            runValidators: true, // Weryfikuje zgodność danych z modelem
+            new: true, 
+            runValidators: true, 
         });
 
         if (!updatedTrainer) {
             return res.status(404).json({ message: "Nie znaleziono trenera o podanym ID do aktualizacji." });
         }
 
-        // Pobranie zaktualizowanych danych z rozwiniętymi referencjami
         const populatedTrainer = await Trainer.findById(id)
-            .populate('school', 'name address contact') // Rozwiń szczegóły szkoły
-            .populate('classes', 'name level price date time'); // Rozwiń szczegóły klas
+            .populate('school', 'name address contact') 
+            .populate('classes', 'name level price date time'); 
 
         res.status(200).json({
             message: `Częściowo zaktualizowano dane trenera: ${populatedTrainer.name}`,
@@ -198,8 +194,8 @@ exports.trainers_patch = async (req, res, next) => {
                 bio: populatedTrainer.bio,
                 experience: populatedTrainer.experience,
                 contact: populatedTrainer.contact,
-                school: populatedTrainer.school, // Wyświetla nazwę i dane kontaktowe szkoły
-                classes: populatedTrainer.classes, // Wyświetla szczegóły zajęć
+                school: populatedTrainer.school, 
+                classes: populatedTrainer.classes, 
             },
         });
     } catch (err) {
@@ -214,7 +210,6 @@ exports.trainers_patch = async (req, res, next) => {
 exports.trainers_delete = (req, res, next) => {
     const id = req.params.trainerId;
 
-    // Znalezienie szczegółów trenera przed usunięciem
     Trainer.findById(id)
         .populate('school', 'name')
         .populate('classes', 'name')
