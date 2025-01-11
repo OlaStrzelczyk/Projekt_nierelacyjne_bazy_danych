@@ -87,6 +87,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 # Expected Body:
 
+```json
 {
 	"name": "new_name",
 	"surname": "new_surname",
@@ -98,6 +99,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 |--------|---------------------|----------------------------------|
 | POST   | `/port/users/login`  | Endpoint logujący użytkownika    |
 
+```json
 {
 	"name": "your_name",
 	"surname": "your_surname",
