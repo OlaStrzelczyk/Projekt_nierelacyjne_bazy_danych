@@ -51,7 +51,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **POST**  | `/port/classes`                  | Dodawanie nowego zajęcia tanecznego do bazy danych.                                                  |
-## Expected body
+### Expected body
 ```json
 {
   "name": "Updated Class Name",
@@ -63,7 +63,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 }
 ```
 
-## Expected response
+### Expected response
 ```json
 {
     "wiadomość": "Utworzono nowe zajęcia.",
@@ -88,7 +88,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **POST**  | `/port/classes/:classId/reviews` | Dodawanie opinii dotyczącej konkretnego zajęcia tanecznego.                                          |
 
-## Expected body
+### Expected body
 ```json
 {
   "text": "Kocham te zajęcia!",
@@ -97,7 +97,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 }
 ```
 
-## Expected response
+### Expected response
 ```json
 {
     "message": "Dodano recenzję do zajęć.",
@@ -128,7 +128,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **GET**   | `/port/classes`                  | Pobranie wszystkich zajęć tanecznych we wszystkich szkołach tanecznych.                              |
-## Expected response
+### Expected response
 ```json
 [
     {
@@ -155,7 +155,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **GET**   | `/port/classes/:classId/reviews` | Pobranie opinii na temat konkretnego zajęcia tanecznego.                                             |
-## Expected response
+### Expected response
 ```json
 {
     "wiadomość": "Opinie zajęć tanecznych: Hip-Hop",
@@ -182,7 +182,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **GET**   | `/port/classes/:classId`         | Pobranie szczegółowych informacji o konkretnym zajęciu tanecznym, w tym szkoły, trenera oraz opinii. |
-## Expected response
+### Expected response
 ```json
 {
     "wiadomość": "Szczegóły zajęć tanecznych",
@@ -261,7 +261,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **DELETE**| `/port/classes/:classId`         | Usunięcie konkretnego zajęcia tanecznego na podstawie ID.                                            |
 
-## Expected response
+### Expected response
 ```json
 {
     "wiadomość": "Usunięto zajęcia taneczne: Zajęcia taneczne dla początkujących"
@@ -275,7 +275,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda  | Route                         | Opis                                                                                  |
 |---------|-------------------------------|---------------------------------------------------------------------------------------|
 | **POST**  | `/port/schools`               | Dodawanie nowej szkoły tanecznej.                                                      |
-## Expected body
+### Expected body
 ```json
 {
     "name": "Siemanko",
@@ -288,7 +288,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 }
 ```
 
-## Expected response
+### Expected response
 ```json
 {
     "wiadomość": "Utworzono nową szkołę.",
@@ -311,7 +311,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
 | **GET**   | `/port/schools`               | Pobranie wszystkich szkół tanecznych.                                                 |
-## Expected response
+### Expected response
 ```json
 [
     {
@@ -336,7 +336,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
 | **GET**   | `/port/schools/:schoolId`     | Pobranie szczegółowych informacji o konkretnej szkole tanecznej, w tym zajęć tanecznych w tej szkole oraz trenerów (pracowników).                       |
-## Expected response
+### Expected response
 ```json
 {
     "wiadomość": "Szczegóły szkoły tańca o numerze: 6782dca1d86b1d09173a9c5c",
@@ -372,7 +372,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
 | **DELETE**| `/port/schools/:schoolId`     | Usunięcie szkoły tanecznej na podstawie ID.                                            |
-## Expected response
+### Expected response
 ```json
 {
     "wiadomość": "Usunięto szkołę: Siemanko"
@@ -386,7 +386,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 |---------|-------------------------------|---------------------------------------------------------------------------------------|
 | **POST**  | `/port/trainers`              | Dodawanie nowego trenera tanecznego do systemu.                                        |
 
-## Expected body
+### Expected body
 ```json
 {
     "name": "Dariusz Klimkowski",
@@ -397,7 +397,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
     "classes": "6782da03d86b1d09173a9c4f"
 }
 ```
-## Expected response
+### Expected response
 ```json
 {
     "message": "Utworzono nowego trenera.",
@@ -419,7 +419,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **GET**   | `/port/trainers`              | Pobranie wszystkich trenerów tanecznych.                                               |
-## Expected response
+### Expected response
 ```json
 [
     {
@@ -444,7 +444,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **GET**   | `/port/trainers/:trainerId`   | Pobranie szczegółowych informacji (w jakiej szkole pracuje i jakich zajęć udziela) o konkretnym trenerze tanecznym.                      |
-## Expected response
+### Expected response
 ```json
 {
     "message": "Szczegóły trenera",
@@ -488,7 +488,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
 | **DELETE**| `/port/trainers/:trainerId`   | Usunięcie trenera na podstawie ID.  
 
-## Expected response
+### Expected response
 ```json
 {    "message": "Usunięto trenera: Jan Kowalski"    }
 ```
@@ -500,7 +500,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 |--------|---------------------|----------------------------------|
 | POST   | `/port/users/signup` | Endpoint rejestrujący użytkownika |
 
-## Expected body:
+### Expected body:
 ```json
 {
 	"name": "new_name", // string, required
@@ -516,7 +516,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 |--------|---------------------|----------------------------------|
 | POST   | `/port/users/login`  | Endpoint logujący użytkownika    |
 
-## Expected body
+### Expected body
 ```json
 {
 	"name": "your_name", // string, required
@@ -526,7 +526,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 }
 ```
 
-## Autorzy:
+# Autorzy:
 
 - Aleksandra Strzelczyk
 - Aleksandra Bluszcz
