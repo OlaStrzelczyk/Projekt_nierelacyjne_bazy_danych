@@ -1,10 +1,10 @@
-## Projekt nierelacyjne bazy danych
+# Projekt nierelacyjne bazy danych
 
-# Opis projektu
+## Opis projektu
 
 Projekt jest aplikacją backendowąh, która wykorzystuje **Node.js**, **JavaScript**, **MongoDB** oraz **CommonJS**. Jest to nierelacyjna baza danych, która przechowuje informacje o harmonogramie szkół tanecznych, w tym dane o szkołach, zajęciach tanecznych i trenerach. Aplikacja umożliwia również przechowywanie opinii użytkowników na temat zajęć tanecznych.
 
-# Technologie
+## Technologie
 
 - **Node.js** - środowisko uruchomieniowe dla JavaScript
 - **JavaScript** - język programowania
@@ -12,7 +12,7 @@ Projekt jest aplikacją backendowąh, która wykorzystuje **Node.js**, **JavaScr
 - **Postman** - narzędzie do testowania API
 - **CommonJS** - system modułów JavaScript
 
-# Struktura Bazy Danych
+## Struktura Bazy Danych
 
 Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
@@ -36,8 +36,6 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 # Zabezpieczenia
 
-# Funkcjonalności
-
 - wszystkie routy zabezpieczone - zapewnia to bezpieczeństwo wrażliwych operacji za pomocą autoryzacji. Tylko użytkownicy, którzy są zalogowani, mogą dodawać, edytować lub usuwać dane.
  
 # Uruchomienie aplikacji
@@ -46,7 +44,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 # Testowanie API
 - Można używać "Postman" do testowania API.
 
-# Dostępne endpointy
+## Dostępne endpointy
 
 # Kolekcja: Classes (Zajęcia Taneczne)
 
