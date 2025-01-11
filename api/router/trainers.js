@@ -8,15 +8,15 @@ const checkAuth = require("../middleware/checkAuth");
 const TrainerController = require("../controllers/trainers");
 
 // Endpointy
-router.get("/", TrainerController.trainers_get_all);
+router.get("/", checkAuth, TrainerController.trainers_get_all);
 
-router.get("/:trainerId", TrainerController.trainers_get_by_id);
+router.get("/:trainerId", checkAuth, TrainerController.trainers_get_by_id);
 
 router.post("/", checkAuth, TrainerController.trainers_add_new);
 
 router.put("/:trainerId", checkAuth, TrainerController.trainers_update);
 
-router.patch('/:trainerId', TrainerController.trainers_patch); 
+router.patch('/:trainerId', checkAuth, TrainerController.trainers_patch); 
 
 router.delete("/:trainerId", checkAuth, TrainerController.trainers_delete);
 
@@ -27,7 +27,7 @@ router.options('/:trainerId', (req, res) => {
     res.status(204).send(); 
 });
 
-router.options('/:trainerId', TrainerController.handleOptions);
+router.options('/:trainerId', checkAuth, TrainerController.handleOptions);
 
 
 module.exports = router;

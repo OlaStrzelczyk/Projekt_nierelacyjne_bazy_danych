@@ -8,15 +8,15 @@ const checkAuth = require("../middleware/checkAuth");
 const SchoolController = require("../controllers/schools");
 
 // Endpointy
-router.get("/", SchoolController.schools_get_all);
+router.get("/", checkAuth, SchoolController.schools_get_all);
 
-router.get("/:schoolId", SchoolController.schools_get_by_id);
+router.get("/:schoolId", checkAuth, SchoolController.schools_get_by_id);
 
 router.post("/", checkAuth, SchoolController.schools_add_new);
 
 router.put("/:schoolId", checkAuth, SchoolController.schools_update);
 
-router.patch('/:schoolId', SchoolController.schools_patch); 
+router.patch('/:schoolId', checkAuth, SchoolController.schools_patch); 
 
 router.delete("/:schoolId", checkAuth, SchoolController.schools_delete);
 
@@ -27,7 +27,7 @@ router.options('/:schoolId', (req, res) => {
     res.status(204).send();
 });
 
-router.options('/:schoolId', SchoolController.handleOptions);
+router.options('/:schoolId', checkAuth, SchoolController.handleOptions);
 
 
 module.exports = router;
