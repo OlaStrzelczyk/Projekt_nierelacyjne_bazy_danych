@@ -80,16 +80,21 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | **PUT**   | `/port/trainers/:trainerId`   | Zmiana jednego lub kilku (nie wszystkich) danych dotyczących konkretnego trenera.                                               |
 | **DELETE**| `/port/trainers/:trainerId`   | Usunięcie trenera na podstawie ID.  
 
-|Register Endpoint      |
-|POST /port/users/signup|
 
-
-
-
-| Metoda  | Route                              | Opis                                                                                                 |
-|**POST**|'/port/users/signup'|  Endpoint rejestrujący użytkownika|
-| **POST**  | `/port/users/login`              | Endpoint logujący użytkownika                                        |
-
+| Metoda | Route               | Opis                             | Body                                   |
+|--------|---------------------|----------------------------------| ---------------------------------------|
+| POST   | `/port/users/signup` | Endpoint rejestrujący użytkownika |    {
+	"name": "new_name",
+	"surname": "new_surname",
+	"email": "new_email",
+	"password": "new_password
+}                                  |
+| POST   | `/port/users/login`  | Endpoint logujący użytkownika    |        {
+	"name": "your_name",
+	"surname": "your_surname",
+	"email": "your_email",
+	"password": "your_password
+}                           |
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
