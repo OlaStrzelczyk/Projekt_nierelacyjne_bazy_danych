@@ -66,9 +66,17 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 | **POST**  | `/port/schools`               | Dodawanie nowej szkoły tanecznej.                                                      |
 | **GET**   | `/port/schools`               | Pobranie wszystkich szkół tanecznych.                                                 |
 | **GET**   | `/port/schools/:schoolId`     | Pobranie szczegółowych informacji o konkretnej szkole tanecznej, w tym zajęć tanecznych w tej szkole oraz trenerów (pracowników).                       |
-| **PUT**   | `/port/schools/:schoolId`     | Zmiana danych szkoły tanecznej na podstawie ID.                                        |
+| **PUT**   | `/port/schools/:schoolId`     | Zmiana jednego lub kilku (nie wszystkich) danych dotyczących konkretnej szkoły.                                        |
 | **DELETE**| `/port/schools/:schoolId`     | Usunięcie szkoły tanecznej na podstawie ID.                                            |
 
 
+### Kolekcja: Trainers (Trenerzy)
 
+| Metoda  | Route                         | Opis                                                                                  |
+|---------|-------------------------------|---------------------------------------------------------------------------------------|
+| **POST**  | `/port/trainers`              | Dodawanie nowego trenera tanecznego do systemu.                                        |
+| **GET**   | `/port/trainers`              | Pobranie wszystkich trenerów tanecznych.                                               |
+| **GET**   | `/port/trainers/:trainerId`   | Pobranie szczegółowych informacji (w jakiej szkole pracuje i jakich zajęć udziela) o konkretnym trenerze tanecznym.                      |
+| **PUT**   | `/port/trainers/:trainerId`   | Zmiana jednego lub kilku (nie wszystkich) danych dotyczących konkretnego trenera.                                               |
+| **DELETE**| `/port/trainers/:trainerId`   | Usunięcie trenera na podstawie ID.  
   
