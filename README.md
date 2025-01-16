@@ -1,56 +1,57 @@
-# Projekt nierelacyjne bazy danych
+# Non-Relational Database Project
 
-## Opis projektu
+## Project Description
 
-Projekt jest aplikacją backendową, która wykorzystuje **Node.js**, **JavaScript**, **MongoDB** oraz **CommonJS**. Jest to nierelacyjna baza danych, która przechowuje informacje o harmonogramie szkół tanecznych, w tym dane o szkołach, zajęciach tanecznych i trenerach. Aplikacja umożliwia również przechowywanie opinii użytkowników na temat zajęć tanecznych.
+This project is a backend application built with **Node.js**, **JavaScript**, **MongoDB** and **CommonJS**. It is a non-relational database designed to store information about dance school schedules, including details about schools, dance classes, and trainers. The application also allows users to leave reviews for specific dance classes.
 
-## Technologie
+## Technologies
 
-- **Node.js** - środowisko uruchomieniowe dla JavaScript
-- **JavaScript** - język programowania
-- **MongoDB** - nierelacyjna baza danych
-- **Postman** - narzędzie do testowania API
-- **CommonJS** - system modułów JavaScript
+- **Node.js** - JavaScript runtime environment
+- **JavaScript** - Programming language
+- **MongoDB** - Non-relational database
+- **Postman** -  API testing tool
+- **CommonJS** - JavaScript module system
 
-## Struktura Bazy Danych
+## Database Structure
 
-Projekt składa się z trzech kolekcji oraz jednej tablicy:
+The project consists of three collections and one array:
 
-1. **Szkoły taneczne** (`schools`)
-   - Zawiera informacje o szkołach tanecznych.
+1. **Dance Schools** (`schools`)
+   - Stores information about dance schools.
    
-2. **Zajęcia taneczne** (`classes`)
-   - Zawiera informacje o poszczególnych zajęciach tanecznych, takie jak nazwa, godzina, lokalizacja i inne.
+2. **Dance Classes** (`classes`)
+   - Contains information about individual dance classes.
    
 3. **Trenerzy** (`trainers`)
-   - Zawiera dane o trenerach, którzy prowadzą zajęcia.
+   - Holds data about trainers who conduct the classes.
 
 4. **Opinie** (`reviews`)
-   - Tablica przechowująca opinie użytkowników na temat poszczególnych zajęć tanecznych.
+   - An array for storing user reviews of specific dance classes.
    
-## Relacje między kolekcjami:
-- Kolekcje są połączone relacjami. Na przykład:
-- każde zajęcie (`classes`) może mieć przypisanych kilku trenerów (`trainers`), opinie (`reviews`) oraz jedną szkołę tańca ('schools'),
-- każda szkoła tańca ma przypisane zajęcia taneczne (`classes`) oraz trenerów (`trainers`),
-- każdy trener należy do danej szkoły (`schools`) i udziela konkretne zajęcia (`classes`).
+## Relationships Between Collections
+The collections are interconnected:
+- Each class (classes) can have multiple assigned trainers (trainers), reviews (reviews), and one dance school (schools).
+- Each dance school has assigned dance classes (classes) and trainers (trainers).
+- Each trainer belongs to a specific dance school (schools) and conducts specific classes (classes).
 
-## Zabezpieczenia
 
-- wszystkie routy zabezpieczone - zapewnia to bezpieczeństwo wrażliwych operacji za pomocą autoryzacji. Tylko użytkownicy, którzy są zalogowani, mogą dodawać, edytować lub usuwać dane.
+## Security
+
+- All routes are secured to ensure the safety of sensitive operations via authorization. Only logged-in users can add, edit, or delete data.
  
-## Uruchomienie aplikacji
-- Uruchamianie aplikacji na swoim lokalnym serwerze za pomocą komendy: "node server.js".
+## Running the Application
+- Start the application on your local server using the command: "node server.js".
 
-## Testowanie API
-- Można używać "Postman" do testowania API.
+## API Testing
+- Use Postman for API testing.
 
-# Dostępne Endpointy
+# Available Endpoints
 
-## Kolekcja: Classes (Zajęcia Taneczne)
+## Collection: Classes (Dance Classes)
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **POST**  | `/port/classes`                  | Dodawanie nowego zajęcia tanecznego do bazy danych.                                                  |
+| **POST**  | `/port/classes`                  | Adds a new dance class to the database.                                                  |
 ### Expected body
 ```json
 {
@@ -86,7 +87,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **POST**  | `/port/classes/:classId/reviews` | Dodawanie opinii dotyczącej konkretnego zajęcia tanecznego.                                          |
+| **POST**  | `/port/classes/:classId/reviews` | Adds review to the individual dance class.                                         |
 
 ### Expected body
 ```json
@@ -127,7 +128,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **GET**   | `/port/classes`                  | Pobranie wszystkich zajęć tanecznych we wszystkich szkołach tanecznych.                              |
+| **GET**   | `/port/classes`                  | Shows all dance classes at all dance schools.                             |
 ### Expected response
 ```json
 [
@@ -154,7 +155,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **GET**   | `/port/classes/:classId/reviews` | Pobranie opinii na temat konkretnego zajęcia tanecznego.                                             |
+| **GET**   | `/port/classes/:classId/reviews` | Shows all reviews of the specific dance class.                                             |
 ### Expected response
 ```json
 {
@@ -181,7 +182,8 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **GET**   | `/port/classes/:classId`         | Pobranie szczegółowych informacji o konkretnym zajęciu tanecznym, w tym szkoły, trenera oraz opinii. |
+| **GET**   | `/port/classes/:classId`         | Shows detailed information about a specific dance class, including school, trainer and reviews. |
+
 ### Expected response
 ```json
 {
@@ -246,7 +248,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **PUT**   | `/port/classes/:classId`         | Zmiana wszystkich danych konkretnego zajęcia tanecznego.                                             |
+| **PUT**   | `/port/classes/:classId`         | Changing all data for a specific dance class.                                             |
 
 
 
@@ -259,7 +261,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **DELETE**| `/port/classes/:classId`         | Usunięcie konkretnego zajęcia tanecznego na podstawie ID.                                            |
+| **DELETE**| `/port/classes/:classId`         | Removing a specific dance class based on ID.                                           |
 
 ### Expected response
 ```json
@@ -274,7 +276,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                         | Opis                                                                                  |
 |---------|-------------------------------|---------------------------------------------------------------------------------------|
-| **POST**  | `/port/schools`               | Dodawanie nowej szkoły tanecznej.                                                      |
+| **POST**  | `/port/schools`               | Adding a new dance school.                                                   |
 ### Expected body
 ```json
 {
@@ -310,7 +312,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
-| **GET**   | `/port/schools`               | Pobranie wszystkich szkół tanecznych.                                                 |
+| **GET**   | `/port/schools`               | Shows all dance schools.                                               |
 ### Expected response
 ```json
 [
@@ -335,7 +337,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
-| **GET**   | `/port/schools/:schoolId`     | Pobranie szczegółowych informacji o konkretnej szkole tanecznej, w tym zajęć tanecznych w tej szkole oraz trenerów (pracowników).                       |
+| **GET**   | `/port/schools/:schoolId`     | Shows detailed information about a specific dance school, including dance classes at that school and trainers (employees).                      |
 ### Expected response
 ```json
 {
@@ -363,15 +365,16 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
-| **PUT**   | `/port/schools/:schoolId`     | Zmiana wszystkich danych istniejącej szkoły.                                   |
+| **PUT**   | `/port/schools/:schoolId`     | 
+Change all details of an existing school.                                  |
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
-| **PATCH**   | `/port/schools/:schoolId`     | Zmiana jednego lub kilku (nie wszystkich) danych dotyczących istniejącej szkoły.                                        |
+| **PATCH**   | `/port/schools/:schoolId`     | Changing one or more (not all) data about an existing school.                                        |
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
-| **DELETE**| `/port/schools/:schoolId`     | Usunięcie szkoły tanecznej na podstawie ID.                                            |
+| **DELETE**| `/port/schools/:schoolId`     | Removal of a dance school based on ID.                                           |
 ### Expected response
 ```json
 {
@@ -384,7 +387,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                         | Opis                                                                                  |
 |---------|-------------------------------|---------------------------------------------------------------------------------------|
-| **POST**  | `/port/trainers`              | Dodawanie nowego trenera tanecznego do systemu.                                        |
+| **POST**  | `/port/trainers`              | Adding a new dance trainer to the system.                                      |
 
 ### Expected body
 ```json
@@ -418,7 +421,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **GET**   | `/port/trainers`              | Pobranie wszystkich trenerów tanecznych.                                               |
+| **GET**   | `/port/trainers`              | Download all dance trainers.                                               |
 ### Expected response
 ```json
 [
@@ -443,7 +446,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **GET**   | `/port/trainers/:trainerId`   | Pobranie szczegółowych informacji (w jakiej szkole pracuje i jakich zajęć udziela) o konkretnym trenerze tanecznym.                      |
+| **GET**   | `/port/trainers/:trainerId`   | Shows detailed information (which school he works at and what classes he gives) about a specific dance trainer.                    |
 ### Expected response
 ```json
 {
@@ -476,17 +479,17 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **PUT**   | `/port/trainers/:trainerId`   | Zmiana wszystkich danych dotyczących istniejącej szkoły.                    |
+| **PUT**   | `/port/trainers/:trainerId`   | Change all details about an existing school.                    |
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **PATCH**   | `/port/trainers/:trainerId`   | Zmiana jednego lub kilku (nie wszystkich) danych dotyczących istniejącej szkoły.                                            |
+| **PATCH**   | `/port/trainers/:trainerId`   | Changing one or more (not all) data about an existing school.                                            |
 
 
 
 | Metoda  | Route                              | Opis                                                                                                 |
 |---------|------------------------------------|------------------------------------------------------------------------------------------------------|
-| **DELETE**| `/port/trainers/:trainerId`   | Usunięcie trenera na podstawie ID.  
+| **DELETE**| `/port/trainers/:trainerId`   | Removing a trainer based on ID.  
 
 ### Expected response
 ```json
@@ -498,7 +501,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
-| POST   | `/port/users/signup` | Endpoint rejestrujący użytkownika |
+| POST   | `/port/users/signup` | Endpoint registering the user. |
 
 ### Expected body:
 ```json
@@ -514,7 +517,7 @@ Projekt składa się z trzech kolekcji oraz jednej tablicy:
 
 | Metoda | Route               | Opis                             |
 |--------|---------------------|----------------------------------|
-| POST   | `/port/users/login`  | Endpoint logujący użytkownika    |
+| POST   | `/port/users/login`  | Endpoint logging the user    |
 
 ### Expected body
 ```json
